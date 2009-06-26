@@ -1,4 +1,7 @@
 class SitesController < ApplicationController
+
+  before_filter :login_required, :only => [:edit, :update, :destroy] 	
+
   # GET /sites
   # GET /sites.xml
   def index
