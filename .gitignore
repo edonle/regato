@@ -1,5 +1,6 @@
 base.yml
 *~
+*.swp
 *.cache
 *.log
 *.pid
