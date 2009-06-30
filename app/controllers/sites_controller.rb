@@ -5,6 +5,8 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.xml
   def index
+    
+    @categories = Category.find(:all, :order => 'title')
     @sites = Site.all
 
     respond_to do |format|
