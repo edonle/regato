@@ -1,6 +1,6 @@
 <% if logged_in? %>
 <h1>Listing sites</h1>
-<%= link_to "Sair", logout_path %>
+<%= link_to 'Nova categoria', new_category_path %> | <%= link_to 'Novo usu&#225;rio', new_user_path %> | <%= link_to "Sair", logout_path %>
 <table>
   <tr>
     <th>Url</th>
@@ -18,21 +18,14 @@
 <% end %>
 
 <h1>Sites</h1>
+<%= link_to 'Indique um...', new_site_path %>
 <% for category in @categories %>
 	<% unless category.sites.empty? %>	
 	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
 	<ul>
 	  <% for site in category.sites %>
-<<<<<<< HEAD:app/views/sites/index.html.erb
-		<li><%= link_to 'Site name', site.url %></li>
-=======
-		  <li><%= link_to site.name, site.url, {:target => "_blank"} %></li>
->>>>>>> working:app/views/sites/index.html.erb
+		<li><%= link_to site.name, site.url, {:target => "_blank"} %></li>
 	  <% end %>
 	</ul>
 	<% end %>
 <% end %>
-
-<br />
-
-<%= link_to 'New site', new_site_path %>

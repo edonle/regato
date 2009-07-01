@@ -49,8 +49,8 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.save
-        flash[:notice] = 'Site was successfully created.'
-        format.html { redirect_to(@site) }
+        flash[:notice] = 'Obrigado pela sua sugest&#227;o!'
+        format.html { redirect_to(sites_url) }
         format.xml  { render :xml => @site, :status => :created, :location => @site }
       else
         format.html { render :action => "new" }
