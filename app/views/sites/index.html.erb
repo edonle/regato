@@ -23,7 +23,7 @@
 	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
 	<ul>
 	  <% for site in category.sites %>
-		<li><%= link_to 'Site name', site.url %></li>
+		  <li><%= link_to site.name, site.url, {:target => "_blank"} %></li>
 	  <% end %>
 	</ul>
 	<% end %>
