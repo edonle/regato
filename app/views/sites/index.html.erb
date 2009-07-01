@@ -23,7 +23,11 @@
 	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
 	<ul>
 	  <% for site in category.sites %>
+<<<<<<< HEAD:app/views/sites/index.html.erb
 		<li><%= link_to 'Site name', site.url %></li>
+=======
+		  <li><%= link_to site.name, site.url, {:target => "_blank"} %></li>
+>>>>>>> working:app/views/sites/index.html.erb
 	  <% end %>
 	</ul>
 	<% end %>
