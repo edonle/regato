@@ -1,0 +1,19 @@
+h1, h2, h3 {
+    	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    	color: #000000;
+    }
+    h1 {
+    	font-weight: bold;
+    	font-size: 175%;
+    	margin: 0;
+    }
+    body {
+    	margin: 0;
+    	padding: 0;
+    }
+    #header {
+    	width: 320px;
+    	height: 40px;
+    	margin: 0 auto;
+    	background: url(/images/img02_iphone.gif) no-repeat;
+    }

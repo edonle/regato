@@ -1,5 +1,5 @@
 <% if logged_in? %>
-<h1>Listing sites</h1>
+<h1>Listing sites in IPhone</h1>
 <%= link_to 'Nova categoria', new_category_path %> | <%= link_to 'Novo usu&#225;rio', new_user_path %> | <%= link_to "Sair", logout_path %>
 <table>
   <tr>
@@ -17,7 +17,7 @@
 </table>  
 <% end %>
 
-<h1>Sites in Desktop</h1>
+<h1>Sites in Iphone</h1>
 <%= link_to 'Indique um...', new_site_path %>
 <% for category in @categories %>
 	<% unless category.sites.empty? %>	

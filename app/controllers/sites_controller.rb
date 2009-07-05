@@ -12,6 +12,7 @@ class SitesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sites }
+	  format.iphone # index.iphone.erb
     end
   end
 
@@ -23,6 +24,7 @@ class SitesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @site }
+	  format.iphone
     end
   end
 
@@ -34,6 +36,7 @@ class SitesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @site }
+	  format.iphone
     end
   end
 
@@ -50,7 +53,7 @@ class SitesController < ApplicationController
     respond_to do |format|
       if @site.save
         flash[:notice] = 'Obrigado pela sua sugest&#227;o!'
-        format.html { redirect_to(sites_url) }
+        format.html { redirect_to(@site) }
         format.xml  { render :xml => @site, :status => :created, :location => @site }
       else
         format.html { render :action => "new" }

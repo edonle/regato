@@ -10,4 +10,6 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  acts_as_iphone_controller
 end

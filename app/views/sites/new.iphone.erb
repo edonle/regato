@@ -1,0 +1,15 @@
+<h1>Novo site no IPhone</h1>
+
+<% form_for(@site) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.submit 'Sugerir' %>
+  </p>
+<% end %>
+
+<%= link_to 'Voltar', sites_path %>
