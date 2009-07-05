@@ -51,11 +51,13 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         flash[:notice] = 'Category was successfully created.'
-        format.html { redirect_to(@category) }
+        format.html { redirect_to(categories_url) }
         format.xml  { render :xml => @category, :status => :created, :location => @category }
+		format.iphone { redirect_to(categories_url) }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
+		format.iphone { render :action => "new" }
       end
     end
   end
@@ -70,9 +72,11 @@ class CategoriesController < ApplicationController
         flash[:notice] = 'Category was successfully updated.'
         format.html { redirect_to(@category) }
         format.xml  { head :ok }
+		format.iphone { redirect_to(@category) }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
+		format.iphone { render :action => "edit" }
       end
     end
   end
@@ -86,6 +90,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(categories_url) }
       format.xml  { head :ok }
+	  format.iphone { redirect_to(categories_url) }
     end
   end
 end

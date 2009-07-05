@@ -53,11 +53,13 @@ class SitesController < ApplicationController
     respond_to do |format|
       if @site.save
         flash[:notice] = 'Obrigado pela sua sugest&#227;o!'
-        format.html { redirect_to(@site) }
+        format.html { redirect_to(sites_url) }
         format.xml  { render :xml => @site, :status => :created, :location => @site }
+		format.iphone { redirect_to(sites_url) }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @site.errors, :status => :unprocessable_entity }
+		format.iphone { render :action => "new" }
       end
     end
   end
@@ -72,9 +74,11 @@ class SitesController < ApplicationController
         flash[:notice] = 'Site was successfully updated.'
         format.html { redirect_to(@site) }
         format.xml  { head :ok }
+		format.iphone { redirect_to(@site) }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @site.errors, :status => :unprocessable_entity }
+		format.iphone { render :action => "edit" }
       end
     end
   end
@@ -88,6 +92,7 @@ class SitesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(sites_url) }
       format.xml  { head :ok }
+	  format.iphone { redirect_to(sites_url) }
     end
   end
 end
