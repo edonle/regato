@@ -9,6 +9,7 @@
 <% @sites.each do |site| %>
   <tr>
     <td><%=h site.url %></td>
+	<td><%= link_to 'Ativar', activate_site_path(site.activation_code) %></td>
     <td><%= link_to '+', site %></td>
     <td><%= link_to 'e', edit_site_path(site) %></td>
     <td><%= link_to 'x', site, :confirm => 'Are you sure?', :method => :delete %></td>    
@@ -20,7 +21,7 @@
 <h1>Sites in Desktop</h1>
 <%= link_to 'Indique um...', new_site_path %>
 <% for category in @categories %>
-	<% unless category.sites.empty? %>	
+	<% unless category.sites.empty? %>		
 	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
 	<ul>
 	  <% for site in category.sites %>

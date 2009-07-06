@@ -9,11 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD:db/schema.rb
-ActiveRecord::Schema.define(:version => 20090630191332) do
-=======
-ActiveRecord::Schema.define(:version => 20090701014358) do
->>>>>>> working:db/schema.rb
+ActiveRecord::Schema.define(:version => 20090705155442) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -33,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20090701014358) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "activation_code", :limit => 40
+    t.datetime "activated_at"
   end
 
   create_table "users", :force => true do |t|

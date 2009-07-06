@@ -9,6 +9,7 @@
 <% @sites.each do |site| %>
   <tr>
     <td><%=h site.url %></td>
+	<td><%= link_to 'Ativar', activate_site_path(site.activation_code) %></td>
     <td><%= link_to '+', site %></td>
     <td><%= link_to 'e', edit_site_path(site) %></td>
     <td><%= link_to 'x', site, :confirm => 'Are you sure?', :method => :delete %></td>    

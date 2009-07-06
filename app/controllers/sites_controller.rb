@@ -95,4 +95,16 @@ class SitesController < ApplicationController
 	  format.iphone { redirect_to(sites_url) }
     end
   end
+  
+  def activate
+    @site = params[:activation_code].blank? ? false : Site.find_by_activation_code(params[:activation_code])
+    # Se o site não estiver ativo, faça-o.
+    if !@site.active?
+      @site.activate
+      flash[:notice] = "O site #{@site.url} foi ativado com sucesso!"
+    else
+      flash[:notice] = "O site #{@site.url} já está ativado!"
+    end
+    redirect_to :controller => 'sites', :action => 'index'
+  end
 end

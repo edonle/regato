@@ -10,6 +10,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :sites
+  
+  map.activate "/activate/:activation_code", :controller => 'sites', :action => 'activate'
+  
+  map.activate_site "/site/activate/:activation_code", :controller => 'sites', :action => 'activate'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
