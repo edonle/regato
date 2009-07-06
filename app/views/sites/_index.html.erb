@@ -1,0 +1,34 @@
+<% if logged_in? %>
+<h1>Listing sites</h1>
+<%= link_to 'Nova categoria', new_category_path %> | <%= link_to 'Novo usu&#225;rio', new_user_path %> | <%= link_to "Sair", logout_path %>
+<table>
+  <tr>
+    <th>Url</th>
+  </tr>
+
+<% @sites.each do |site| %>
+  <tr>
+    <td><%=h site.url %></td>
+    <td><%= link_to '+', site %></td>
+    <td><%= link_to 'e', edit_site_path(site) %></td>
+    <td><%= link_to 'x', site, :confirm => 'Are you sure?', :method => :delete %></td>    
+	<% unless site.name == nil %>
+		<td><%= link_to 'Ativar', activate_site_path(site.activation_code) %></td>
+	<% end %>
+  </tr>
+<% end %>
+</table>  
+<% end %>
+
+<h1>Sites in Desktop</h1>
+<%= link_to 'Indique um...', new_site_path %>
+<% for category in @categories %>
+	<% unless category.sites.empty? %>		
+	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
+	<ul>
+	  <% for site in category.sites %>
+		<li><%= link_to site.name, site.url, {:target => "_blank"} %></li>
+	  <% end %>
+	</ul>
+	<% end %>
+<% end %>
