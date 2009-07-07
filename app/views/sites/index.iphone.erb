@@ -1,1 +1,45 @@
-<%= render :partial => "index" %>
+<% if logged_in? %>
+	<p>
+		<%= link_to 'Listar', list_path %> | <%= link_to 'Nova categoria', new_category_path %> | <%= link_to 'Novo usu&#225;rio', new_user_path %> | <%= link_to "Sair", logout_path %>
+	</p>
+	<h1>Ativar sites</h1>
+	<table>
+		<tr>
+			<th>Url</th>
+		</tr>
+		<% @sites.each do |site| %>
+			<tr>
+			<% unless site.activation_code == nil %>
+				<td><%=h site.url %></td>
+				<td><%= link_to 'acessar', site.url, {:target => "_blank"} %></td>
+				<td><%= link_to 'editar', edit_site_path(site) %></td>
+				<td><%= link_to 'excluir', site, :confirm => 'Vc tem certeza disto?', :method => :delete %></td>
+				<% unless site.name == nil %>
+					<td><%= link_to 'aprovar', activate_site_path(site.activation_code) %></td>
+				<% end %>
+			<% end %>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
+
+<p>
+	<%= link_to 'Indique', new_site_path %> | <%= link_to 'Sobre', about_path %>
+</p>
+<h1>Sites in Desktop</h1>
+<% for category in @categories %>
+	<% unless category.sites.empty? %>
+	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
+	<ul>
+		<% for site in category.sites %>
+			<% unless site.activation_code != nil %>
+				<li>
+					<%= link_to site.name, site.url, {:target => "_blank"} %>
+					<br>
+					<%= site.description.slice(0,30) %><%= site.description.size >= 30 ? '...' : '' %>
+				</li>
+			<% end %>
+		<% end %>
+	</ul>
+	<% end %>
+<% end %>

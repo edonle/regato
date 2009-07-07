@@ -1,10 +1,22 @@
 class Site < ActiveRecord::Base
   has_and_belongs_to_many :categories
+  
   validates_presence_of :url
+  
+  validates_each :url, :on => :create do |record, attr, value|
+    begin
+      uri = URI.parse(value)
+      if uri.class != URI::HTTP
+        record.errors.add(attr, 'Somente o protocolo HTTP é aceito.')
+      end
+    rescue URI::InvalidURIError
+      record.errors.add(attr, 'O formato da url não é valido.')
+    end
+  end
   
   before_create :make_activation_code  
   
-  # Activates the announcement in the database.
+  # Ativa o site no banco de dados.
   def activate
     @activated = true
     self.activated_at = Time.now.utc
@@ -13,7 +25,7 @@ class Site < ActiveRecord::Base
   end
 
   def active?
-    # the existence of an activation code means they have not activated yet
+	# A existência do activation code significa que o site não foi ativado ainda
     activation_code.nil?
   end
   

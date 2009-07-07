@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
 
-  before_filter :login_required, :only => [:edit, :update, :destroy] 	
+  before_filter :login_required, :only => [:show, :edit, :update, :destroy, :list]
 
   # GET /sites
   # GET /sites.xml
@@ -13,6 +13,17 @@ class SitesController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @sites }
 	  format.iphone # index.iphone.erb
+    end
+  end
+  
+  def list
+    
+    @sites = Site.find(:all, :conditions => {:activation_code => nil})
+
+    respond_to do |format|
+      format.html # list.html.erb
+      format.xml  { render :xml => @sites }
+	  format.iphone # list.iphone.erb
     end
   end
 
@@ -106,5 +117,13 @@ class SitesController < ApplicationController
       flash[:notice] = "O site #{@site.url} já está ativado!"
     end
     redirect_to :controller => 'sites', :action => 'index'
+  end
+  
+  def about
+
+    respond_to do |format|
+      format.html # about.html.erb
+	  format.iphone # about.iphone.erb
+    end
   end
 end
