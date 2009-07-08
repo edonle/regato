@@ -26,7 +26,7 @@
 <p>
 	<%= link_to 'Indique', new_site_path %> | <%= link_to 'Sobre', about_path %>
 </p>
-<h1>Sites in Desktop</h1>
+<h1>Sites in IPhone</h1>
 <% for category in @categories %>
 	<% unless category.sites.empty? %>
 	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
@@ -36,7 +36,7 @@
 				<li>
 					<%= link_to site.name, site.url, {:target => "_blank"} %>
 					<br>
-					<%= site.description.slice(0,30) %><%= site.description.size >= 30 ? '...' : '' %>
+					<%= site.description.slice(0,50) %><%= site.description.size >= 50 ? '...' : '' %>
 				</li>
 			<% end %>
 		<% end %>
