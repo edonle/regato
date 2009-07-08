@@ -1,23 +1,23 @@
-<h1>Editing category</h1>
+<h1>Editar categoria</h1>
 
 <% form_for(@category) do |f| %>
   <%= f.error_messages %>
 
 
   <p>
-    <%= f.label :title %><br />
+    <%= f.label :Titulo %><br />
     <%= f.text_field :title %>
   </p>
 
   <p>
-    <%= f.label :description %><br />
+    <%= f.label :Descricao %><br />
     <%= f.text_area :description %>
   </p>
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Atualizar' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Mostrar', @category %> |
+<%= link_to 'Voltar', categories_path %>

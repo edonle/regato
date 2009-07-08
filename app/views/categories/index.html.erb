@@ -1,11 +1,11 @@
-<h1>Listing categories</h1>
+<h1>Categorias</h1>
 
 <table>
   <tr>
 
-    <th>Title</th>
+    <th>Titulo</th>
 
-    <th>Description</th>
+    <th>Descricao</th>
 
   </tr>
 
@@ -16,13 +16,14 @@
 
     <td><%=h category.description %></td>
 
-    <td><%= link_to 'Show', category %></td>
-    <td><%= link_to 'Edit', edit_category_path(category) %></td>
-    <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Mostrar', category %></td>
+    <td><%= link_to 'Editar', edit_category_path(category) %></td>
+    <td><%= link_to 'Excluir', category, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New category', new_category_path %>
+<%= link_to 'Incluir categoria', new_category_path %> |
+<%= link_to 'Back', sites_path %>
