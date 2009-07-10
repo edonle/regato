@@ -139,7 +139,7 @@ tr.row-b {
 form {
 	margin:10px; padding: 0 5px;
 	border: 1px solid #f2f2f2; 
-	background-color: #FAFAFA; 
+	background-color: #EFEFEF; 
 }
 label {
 	display:block;
@@ -148,7 +148,7 @@ label {
 }
 input {
 	padding:2px;
-	border:1px solid #eee;
+	border:1px solid #93BC0C;
 	font: normal 1em Verdana, sans-serif;
 	color:#777;
 }
@@ -156,7 +156,7 @@ textarea {
 	width:400px;
 	padding:2px;
 	font: normal 1em Verdana, sans-serif;
-	border:1px solid #eee;
+	border:1px solid #93BC0C;
 	height:100px;
 	display:block;
 	color:#777;
@@ -206,13 +206,13 @@ input.button {
 #content-wrap {
 	clear: both;
 	width: 760px;
-	padding: 0; 
-	margin: 10px auto;
+	padding: 0;
+	margin: 1px auto;
 }
 #header {
 	width: 820px;
 	position: relative;
-	height: 103px;
+	height: 93px;
 	background: #CCC url(../images/header.jpg) no-repeat center top;
 	padding: 0;	
 	color: #FFF;
@@ -293,11 +293,11 @@ input.button {
 #main {
 	float: left;
 	width: 70%;
-	padding: 0; margin: 0 0 0 5px;
+	padding: 0; margin: 0 0 15px 5px;
 	display: inline;
 }
 #main h1 {
-	margin-top: 10px;
+	margin-top: 0;
 	font: Bold 140% 'Trebuchet MS', Tahoma, Sans-serif;
 	color: #88ac0b; 
 	padding: 5px 0 5px 25px; 	
