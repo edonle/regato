@@ -1,7 +1,4 @@
 <% if logged_in? %>
-	<p>
-		<%= link_to 'Listar', list_path %> | <%= link_to 'Nova categoria', new_category_path %> | <%= link_to 'Novo usu&#225;rio', new_user_path %> | <%= link_to "Sair", logout_path %>
-	</p>
 	<h1>Ativar sites</h1>
 	<table>
 		<tr>
@@ -22,10 +19,6 @@
 		<% end %>
 	</table>
 <% end %>
-
-<p>
-	<%= link_to 'Indique', new_site_path %> | <%= link_to 'Sobre', about_path %>
-</p>
 <h1>Sites in Desktop</h1>
 <% for category in @categories %>
 	<% unless category.sites.empty? %>
@@ -36,7 +29,7 @@
 				<li>
 					<%= link_to site.name, site.url, {:target => "_blank"} %>
 					<br>
-					<%= site.description.slice(0,30) %><%= site.description.size >= 30 ? '...' : '' %>
+					<%= site.description.slice(0,70) %><%= site.description.size >= 70 ? '...' : '' %>
 				</li>
 			<% end %>
 		<% end %>
