@@ -1,13 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-      <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-      <title>IPhone: <%= controller.action_name %></title>
-      <meta name = "viewport"
-          content = "width = device-width, user-scalable = no">
-      <%= stylesheet_link_tag 'iphone' %>
-    </head>
-		<body>
-		  <%= yield %>
-		</body>
-    </html>
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title>Regato</title>
+<meta name = "viewport"
+content = "width = device-width, user-scalable = no">
+<%= stylesheet_link_tag 'ienvision' %>
+</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+			<h1 id="logo-text">regato</h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><%= link_to 'Home', sites_path %></li>
+				<li><%= link_to 'Indique', new_site_path %></li>
+				<li><%= link_to 'Sobre', about_path %></li>
+			</ul>
+		</div>
+		<div id="content-wrap">    
+			<% if logged_in? %>
+				<br /><%= link_to 'Listar', list_path %> | <%= link_to 'Nova categoria', new_category_path %> | <%= link_to 'Novo usu&#225;rio', new_user_path %> | <%= link_to "Sair", logout_path %>
+			<% end %>
+			<p style="color: green"><%= flash[:notice] %></p>
+			<%= yield %>
+		</div>
+		<div id="footer">
+			<p>&copy; 2009 <strong>Regato</strong></p>
+		</div>
+	</body>
+</html>

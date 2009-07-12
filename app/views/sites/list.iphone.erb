@@ -4,8 +4,8 @@
   <tr>
 
     <th>Name</th>
-
-    <th>Description</th>
+	<th></th>
+	<th></th>
 
   </tr>
 
@@ -14,9 +14,6 @@
 
     <td><%=h site.name %></td>
 
-    <td><%=h site.description %></td>
-
-    <td><%= link_to 'Show', site %></td>
     <td><%= link_to 'Edit', edit_site_path(site) %></td>
     <td><%= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
@@ -25,4 +22,4 @@
 
 <br />
 
-<%= link_to 'Back', sites_path %>
+<%= link_to 'Voltar', sites_path %>
