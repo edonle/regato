@@ -20,7 +20,7 @@
     <%= f.collection_select :category_ids, Category.find(:all, :order => 'title'), :id, :title, {}, :multiple => true %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Update', :class => "button" %>
   </p>
 <% end %>
 

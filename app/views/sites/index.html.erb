@@ -2,22 +2,24 @@
 	<h1>Ativar sites</h1>
 	<table>
 		<tr>
-			<th>Url</th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th class="first">Url</th>
+			<th class="first"></th>
+			<th class="first"></th>
+			<th class="first"></th>
+			<th class="first"></th>
 		</tr>
 		<% @sites.each do |site| %>
 			<% unless site.activation_code == nil %>
-			<tr>
+			<tr <%= cycle('class="row-a"',' class="row-b"') %>>
 				<td><%=h site.url %></td>
 				<td><%= link_to 'acessar', site.url, {:target => "_blank"} %></td>
 				<td><%= link_to 'editar', edit_site_path(site) %></td>
 				<td><%= link_to 'excluir', site, :confirm => 'Vc tem certeza disto?', :method => :delete %></td>
+				<td>
 				<% unless site.name == nil %>
-					<td><%= link_to 'aprovar', activate_site_path(site.activation_code) %></td>
+					<%= link_to 'aprovar', activate_site_path(site.activation_code) %>
 				<% end %>
+				</td>
 			</tr>
 			<% end %>
 		<% end %>
@@ -40,3 +42,6 @@
 	</ul>
 	<% end %>
 <% end %>
+<br />
+<%= will_paginate @categories %>
+<br />

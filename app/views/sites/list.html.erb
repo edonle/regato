@@ -3,29 +3,37 @@
 <table>
   <tr>
 
-    <th>Name</th>
+    <th class="first">Name</th>
 
-    <th>Description</th>
+    <th class="first">Description</th>
 	
-	<th></th>
-	<th></th>
-	<th></th>
+	<th class="first"></th>
+	<th class="first"></th>
+	<th class="first"></th>
 
   </tr>
 
 <% @sites.each do |site| %>
-  <tr>
+  <tr <%= cycle('class="row-a"',' class="row-b"') %>>
 
-    <td><%=h site.name %></td>
+    <td class="first"><%=h site.name %></td>
 
-    <td><%=h site.description %></td>
-
+    <td>
+		<% if site.description == nil %>
+			<%=h site.description %></td>
+		<% else %>
+			<%= site.description.slice(0,70) %><%= site.description.size >= 70 ? '...' : '' %>
+		<% end %>
     <td><%= link_to 'Show', site %></td>
     <td><%= link_to 'Edit', edit_site_path(site) %></td>
     <td><%= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+
+<br />
+
+<%= will_paginate @sites %>
 
 <br />
 

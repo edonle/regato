@@ -14,7 +14,7 @@
   </div>
   <div id="menu">
     <ul>
-      <li id="current"><%= link_to 'Home', sites_path %></li>
+      <li><%= link_to 'Home', sites_path %></li>
       <li><%= link_to 'Indique', new_site_path %></li>
       <li><%= link_to 'Sobre', about_path %></li>
 		<% if logged_in? %>
@@ -26,13 +26,13 @@
     </ul>
   </div>
   <div id="content-wrap">    
-    <div id="main">	
-	<p style="color: green"><%= flash[:notice] %></p>
+    <div id="main">
+		<p style="color: green"><%= flash[:notice] %></p>
 	<%= yield %>
     </div>
   </div>
   <div id="footer">
-    <p> &copy; 2009 <strong>Regato</strong> | Design by: styleshout | Valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">RSS Feed</a> </p>
+    <p> &copy; 2009 <strong>Regato</strong> | Design by: styleshout | Valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">RSS Feed</a></p>
   </div>
 </div>
 </body>

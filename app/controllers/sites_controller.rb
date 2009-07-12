@@ -6,7 +6,8 @@ class SitesController < ApplicationController
   # GET /sites.xml
   def index
     
-    @categories = Category.find(:all, :order => 'title')
+    # @categories = Category.find(:all, :order => 'title')
+	@categories = Category.paginate(:all, :order => 'title', :page => params[:page], :per_page => 10)
     @sites = Site.all
 
     respond_to do |format|
@@ -18,7 +19,7 @@ class SitesController < ApplicationController
   
   def list
     
-    @sites = Site.find(:all, :conditions => {:activation_code => nil})
+    @sites = Site.paginate(:all, :conditions => {:activation_code => nil}, :order => 'updated_at DESC', :page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # list.html.erb
