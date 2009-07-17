@@ -8,6 +8,10 @@
     <%= f.text_field :url %>
   </p>
   <p>
+    <%= f.label :Tags %>(Separadas por virgulas)<br />
+    <%= f.text_field :tag_list %>
+  </p>
+  <p>
     <%= f.submit 'Sugerir', :class => "button"%>
   </p>
 <% end %>

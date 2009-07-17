@@ -101,7 +101,6 @@ blockquote {
 table {
 	border-collapse: collapse;
 	margin: 10px;	
-	width: 95%;
 }
 th strong {
 	color: #fff;
@@ -364,3 +363,11 @@ input.button {
 
 /* display and additional classes */
 .clear { clear: both; }
+
+/* tag cloud */
+.nube1 {font-size: 1.0em;}
+.nube2 {font-size: 1.2em;}
+.nube3 {font-size: 1.4em;}
+.nube4 {font-size: 1.6em;}
+.nube5 {font-size: 1.8em;}
+.nube6 {font-size: 2.0em;}

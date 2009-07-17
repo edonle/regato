@@ -5,16 +5,27 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.xml
   def index
-    
-    # @categories = Category.find(:all, :order => 'title')
-	@categories = Category.paginate(:all, :order => 'title', :page => params[:page], :per_page => 10)
-    @sites = Site.all
+	
+    @sites = Site.paginate(:all, :order => 'name', :page => params[:page], :per_page => 5)
+	@tags = Tag.tags(:limit => 100, :order => "name desc")
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sites }
 	  format.iphone # index.iphone.erb
     end
+  end
+  
+  def tag
+	# TODO - Corrigir
+    @sites = Site.paginate(:all, :conditions => {:name => params[:id]}, :order => 'updated_at DESC', :page => params[:page], :per_page => 10)
+	@tags = Tag.tags(:limit => 100, :order => "name desc")
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @sites }
+	  format.iphone # index.iphone.erb
+    end	
   end
   
   def list

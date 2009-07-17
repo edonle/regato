@@ -26,22 +26,32 @@
 	</table>
 <% end %>
 <h1>Sites</h1>
-<% for category in @categories %>
-	<% unless category.sites.empty? %>
-	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
-	<ul>
-		<% for site in category.sites %>
-			<% unless site.activation_code != nil %>
-				<li>
-					<%= link_to site.name, site.url, {:target => "_blank"} %>
-					<br>
-					<%= site.description.slice(0,70) %><%= site.description.size >= 70 ? '...' : '' %>
-				</li>
-			<% end %>
-		<% end %>
-	</ul>
+
+<code>
+	<% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class| %>
+	  <%= link_to name, {:action => :tag, :id => name},
+		:class => css_class %>
 	<% end %>
+</code>
+
+<table>
+
+<% @sites.each do |site| %>
+  <tr <%= cycle('class="row-a"',' class="row-b"') %>>
+
+    <td><%=h site.name %>
+	<% if site.description == nil %>
+			<br /><%=h site.description %>
+		<% else %>
+			<br /><%= site.description.slice(0,70) %><%= site.description.size >= 70 ? '...' : '' %>
+		<% end %>
+	</td>
+
+  </tr>
 <% end %>
-<br />
-<%= will_paginate @categories %>
-<br />
+</table>
+
+
+<p>
+	<%= will_paginate @sites %>
+</p>
