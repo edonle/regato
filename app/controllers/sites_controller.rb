@@ -1,36 +1,49 @@
 class SitesController < ApplicationController
 
   before_filter :login_required, :only => [:show, :edit, :update, :destroy, :list]
-
+  
   # GET /sites
   # GET /sites.xml
   def index
-	
-    @sites = Site.paginate(:all, :order => 'name', :page => params[:page], :per_page => 5)
+
+	# @sitesNoActive recupera todos os sites não ativos
+	# por ordem crescente de data da criação
+	@sitesNoActive = Site.find(:all, 
+		:conditions => "activation_code IS NOT NULL", 
+		:order => 'created_at')
+		
+	# @sites recupera todos os sites ativos
+	# por ordem decrescente de atualização
+	@sites = Site.paginate(:all, 
+		:conditions => {:activation_code => nil}, 
+		:order => 'updated_at DESC', 
+		:page => params[:page], 
+		:per_page => 30)
+
 	@tags = Tag.tags(:limit => 100, :order => "name desc")
 
     respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @sites }
+      format.iphone # index.iphone.erb
+    end
+  end
+  
+  def tag
+    
+	@sites = Site.find_tagged_with(params[:id])
+	@tags = Tag.tags(:limit => 100, :order => "name desc")
+	
+	respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sites }
 	  format.iphone # index.iphone.erb
     end
   end
   
-  def tag
-	# TODO - Corrigir
-    @sites = Site.paginate(:all, :conditions => {:name => params[:id]}, :order => 'updated_at DESC', :page => params[:page], :per_page => 10)
-	@tags = Tag.tags(:limit => 100, :order => "name desc")
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @sites }
-	  format.iphone # index.iphone.erb
-    end	
-  end
-  
   def list
     
-    @sites = Site.paginate(:all, :conditions => {:activation_code => nil}, :order => 'updated_at DESC', :page => params[:page], :per_page => 10)
+    @sites = Site.paginate(:all, :conditions => {:activation_code => nil}, :order => 'updated_at DESC', :page => params[:page], :per_page => 100)
 
     respond_to do |format|
       format.html # list.html.erb

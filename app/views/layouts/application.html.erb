@@ -3,37 +3,41 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Regato</title>
-  <%= stylesheet_link_tag 'envision' %>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>Regato</title>
+	<%= stylesheet_link_tag 'envision' %>
 </head>
-<body>
-<div id="wrap">
-  <div id="header">
-    <h1 id="logo-text">regato</h1>
-  </div>
-  <div id="menu">
-    <ul>
-      <li><%= link_to 'Home', sites_path %></li>
-      <li><%= link_to 'Indique', new_site_path %></li>
-      <li><%= link_to 'Sobre', about_path %></li>
-		<% if logged_in? %>
-			<li><%= link_to 'Listar', list_path %></li>
-			<li><%= link_to 'Nova categoria', new_category_path %></li>
-			<li><%= link_to 'Novo usu&#225;rio', new_user_path %></li>
-			<li><%= link_to "Sair", logout_path %></li>
-		<% end %>
-    </ul>
-  </div>
-  <div id="content-wrap">    
-    <div id="main">
-		<p style="color: green"><%= flash[:notice] %></p>
-	<%= yield %>
-    </div>
-  </div>
-  <div id="footer">
-    <p> &copy; 2009 <strong>Regato</strong> | Design by: styleshout | Valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">RSS Feed</a></p>
-  </div>
-</div>
-</body>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<h1 id="logo-text">regato</h1>
+			</div>
+			<div id="menu">
+				<ul>
+				  <li><%= link_to 'Home', sites_path %></li>
+				  <li><%= link_to 'Indique', new_site_path %></li>
+				  <li><%= link_to 'Sobre', about_path %></li>
+				</ul>
+			</div>
+			<% if logged_in? %>
+				<div id="menu">
+					<ul>
+						<li><%= link_to 'Listar', list_path %></li>
+						<li><%= link_to 'Nova categoria', new_category_path %></li>
+						<li><%= link_to 'Novo usu&#225;rio', new_user_path %></li>
+						<li><%= link_to "Sair", logout_path %></li>
+					</ul>
+				</div>
+			<% end %>
+			<div id="content-wrap">    
+				<div id="main">
+					<p style="color: green"><%= flash[:notice] %></p>
+				<%= yield %>
+				</div>
+			</div>
+			<div id="footer">
+				<p> &copy; 2009 <strong>Regato</strong> | Design by: styleshout | Valid <a href="http://validator.w3.org/check?uri=referer">XHTML</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">RSS Feed</a></p>
+			</div>
+		</div>
+	</body>
 </html>
