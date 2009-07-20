@@ -16,6 +16,10 @@
     <%= f.text_area :description %>
   </p>
   <p>
+    <%= f.label :Tags %><br />
+    <%= f.text_field :tag_list %> (Separadas por virgulas)
+  </p>  
+  <p>
     <%= f.label :category %><br />
     <%= f.collection_select :category_ids, Category.find(:all, :order => 'title'), :id, :title, {}, :multiple => true %>
   </p>
