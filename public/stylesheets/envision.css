@@ -365,9 +365,11 @@ input.button {
 .clear { clear: both; }
 
 /* Tag Cloud */
-#tag_cloud  a {
-	text-decoration: none; 
+#tag_cloud  a, a:visited {
+	text-decoration: none;
+	background: inherit;
 }
+
 #tag_cloud  a:hover {
 	text-decoration: underline; 
 	color: #fff; 
@@ -380,17 +382,3 @@ input.button {
 .nube4 {font-size: 1.6em; color: #88AC0B;}
 .nube5 {font-size: 1.8em; color: #FAFAFA;}
 .nube6 {font-size: 2.0em; color: #E5E5E5;}
-
-/* skype button na pagina 'Sobre' */
-#skype_button {
-	position: relative;
-	margin: 0; padding: 0;
-	font: bolder 11px 'Trebuchet MS', Arial, Sans-serif;
-	letter-spacing: 1px;
-	color: #CCC;
-	text-transform: none;
-	text-align: center;
-	
-	/* change the values of top and left to adjust the position of the logo*/
-	top: -245px; left: 200px;	
-}

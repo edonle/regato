@@ -41,6 +41,17 @@ class SitesController < ApplicationController
     end
   end
   
+  def about_tags
+    
+	@tags = Tag.tags(:limit => 100, :order => "name desc")
+	
+	respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @sites }
+	  format.iphone # index.iphone.erb
+    end
+  end  
+  
   def list
     
     @sites = Site.paginate(:all, :conditions => {:activation_code => nil}, :order => 'updated_at DESC', :page => params[:page], :per_page => 100)

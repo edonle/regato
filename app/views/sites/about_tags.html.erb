@@ -1,0 +1,12 @@
+<h1>Sobre Tags</h1>
+<h2>O que s&atilde;o tags?</h2>
+<p>S&atilde;o palavras-chave ou termo associado com uma informa&ccedil;&atilde;o que s&atilde;o utilizadas pelos usu&aacute;rios para facilitar a localiza&ccedil;&atilde;o. As tags abaixo s&atilde;o redimensionadas de acordo com sua popularidade.</p>
+<div id="tag_cloud">
+	<code>
+		<% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class| %>
+			<%= link_to name, {:action => :tag, :id => name},
+			:class => css_class %>
+		<% end %>
+	</code>
+</div>
+<%= link_to 'Voltar', sites_path %>

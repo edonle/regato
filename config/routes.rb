@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.list '/list', :controller => 'sites', :action => 'list'
   map.about '/sobre', :controller => 'sites', :action => 'about'
+  map.about_tags '/tags', :controller => 'sites', :action => 'about_tags'  
   
   map.resources :users
 
