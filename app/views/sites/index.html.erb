@@ -24,34 +24,21 @@
 	</table>
 <% end %>
 <h1>Sites</h1>
-
-<div id="tag_cloud">
-	<code>
-		<% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class| %>
-			<%= link_to name, {:action => :tag, :id => name},
-			:class => css_class %>
-		<% end %>
-	</code>
-</div>
-
+<%= render :partial => 'toptags' %>
+<h3>Abaixo voc&ecirc; encontra os &uacute;ltimos sites customizados para iPhone e iPod Touch adicionados pelos usu&aacute;rios.</h3>
 <table>
-
-<% @sites.each do |site| %>
-  <tr <%= cycle('class="row-b"',' class="row-a"') %>>
-
-    <td><%= link_to site.name, site.url, {:target => "_blank"} %>
-	<% if site.description == nil %>
-			<br /><%=h site.description %>
-		<% else %>
-			<br /><%= site.description.slice(0,70) %><%= site.description.size >= 70 ? '...' : '' %>
-		<% end %>
-	</td>
-
-  </tr>
-<% end %>
+	<% @sites.each do |site| %>
+	  <tr <%= cycle('class="row-b"',' class="row-a"') %>>
+		<td><%= link_to site.name, site.url, {:target => "_blank"} %>
+		<% if site.description == nil %>
+				<br /><%=h site.description %>
+			<% else %>
+				<br /><%= site.description.slice(0,70) %><%= site.description.size >= 70 ? '...' : '' %>
+			<% end %>
+		</td>
+	  </tr>
+	<% end %>
 </table>
-
-
 <p>
 	<%= will_paginate @sites %>
 </p>

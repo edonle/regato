@@ -364,14 +364,11 @@ input.button {
 /* display and additional classes */
 .clear { clear: both; }
 
-/* Tag Cloud */
-#tag_cloud  a, a:visited {
+#tag_cloud  a {
 	text-decoration: none;
-	background: inherit;
 }
 
 #tag_cloud  a:hover {
-	text-decoration: underline; 
 	color: #fff; 
 	background-color:#CCC;
 }
