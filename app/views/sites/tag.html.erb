@@ -1,5 +1,4 @@
-<h1>Sites</h1>
-<%= render :partial => 'toptags' %>
+<h1>Tag: <%= @mtag %></h1>
 <table>
 	<% @sites.each do |site| %>
 		<tr <%= cycle('class="row-a"',' class="row-b"') %>>
@@ -14,3 +13,4 @@
 		</tr>
 	<% end %>
 </table>
+<%= render :partial => 'toptags' %>

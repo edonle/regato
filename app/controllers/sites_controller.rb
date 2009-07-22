@@ -31,7 +31,8 @@ class SitesController < ApplicationController
   
   def tag
     
-	@sites = Site.find_tagged_with(params[:id])
+	@mtag = params[:id]
+	@sites = Site.find_tagged_with(@mtag)
 	@tags = Tag.tags(:limit => 100, :order => "name desc")
 	
 	respond_to do |format|
