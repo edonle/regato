@@ -32,7 +32,9 @@ class SitesController < ApplicationController
   def tag
     
 	@mtag = params[:id]
-	@sites = Site.find_tagged_with(@mtag)
+	@sites = Site.find_tagged_with(@mtag, 
+    conditions => {:activation_code => nil},
+    :order => 'updated_at DESC')
 	@tags = Tag.tags(:limit => 25, :order => "name desc")
 	
 	respond_to do |format|
@@ -44,7 +46,7 @@ class SitesController < ApplicationController
   
   def about_tags
     
-	@tags = Tag.tags(:limit => 25, :order => "name desc")
+	@tags = Tag.tags(:order => "name")
 	
 	respond_to do |format|
       format.html # index.html.erb
