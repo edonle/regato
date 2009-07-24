@@ -1,0 +1,16 @@
+<h1>Tag: <%= @mtag %></h1>
+<table>
+	<% @sites.each do |site| %>
+		<tr <%= cycle('class="row-a"',' class="row-b"') %>>
+			<td>
+				<%= link_to site.name, site.url, {:target => "_blank"} %>
+				<% if site.description == nil %>
+					<br /><%=h site.description %>
+				<% else %>
+					<br /><%= site.description.slice(0,70) %><%= site.description.size >= 70 ? '...' : '' %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+<%= render :partial => 'toptags' %>

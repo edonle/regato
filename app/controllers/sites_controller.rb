@@ -18,9 +18,9 @@ class SitesController < ApplicationController
 		:conditions => {:activation_code => nil}, 
 		:order => 'updated_at DESC', 
 		:page => params[:page], 
-		:per_page => 30)
+		:per_page => 20)
 
-	@tags = Tag.tags(:limit => 100, :order => "name desc")
+	@tags = Tag.tags(:limit => 25, :order => "name desc")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -33,7 +33,7 @@ class SitesController < ApplicationController
     
 	@mtag = params[:id]
 	@sites = Site.find_tagged_with(@mtag)
-	@tags = Tag.tags(:limit => 100, :order => "name desc")
+	@tags = Tag.tags(:limit => 25, :order => "name desc")
 	
 	respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +44,7 @@ class SitesController < ApplicationController
   
   def about_tags
     
-	@tags = Tag.tags(:limit => 100, :order => "name desc")
+	@tags = Tag.tags(:limit => 25, :order => "name desc")
 	
 	respond_to do |format|
       format.html # index.html.erb

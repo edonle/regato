@@ -30,11 +30,7 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= will_paginate @sites %>
-
-<br />
-
-<%= link_to 'Voltar', sites_path %>
+<div id="paginate">
+  <%= will_paginate @sites %>
+  <%= link_to 'Voltar', sites_path %>
+</div>

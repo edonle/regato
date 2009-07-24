@@ -4,12 +4,17 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :URL %><br />
+    <%= f.label :URL %>
     <%= f.text_field :url %>
   </p>
   <p>
-    <%= f.submit 'Sugerir', :class => "button" %>
+    <%= f.label :Tags %>
+    <%= f.text_field :tag_list %> (Separadas por virgulas)
+  </p>
+  <p>
+    <%= f.submit 'Sugerir', :class => "button"%>
   </p>
 <% end %>
-
-<%= link_to 'Voltar', sites_path %>
+<div id="paginate">
+  <%= link_to 'Voltar', sites_path %>
+</div>

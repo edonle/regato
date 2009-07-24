@@ -2,45 +2,43 @@
 	<h1>Ativar sites</h1>
 	<table>
 		<tr>
-			<th>Url</th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th class="first">Url</th>
+			<th class="first"></th>
+			<th class="first"></th>
+			<th class="first"></th>
+			<th class="first"></th>
 		</tr>
-		<% @sites.each do |site| %>
-			<tr>
-			<% unless site.activation_code == nil %>
+		<% @sitesNoActive.each do |site| %>
+			<tr <%= cycle('class="row-a"',' class="row-b"') %>>
 				<td><%=h site.url %></td>
+				<td><%= link_to 'acessar', site.url, {:target => "_blank"} %></td>
 				<td><%= link_to 'editar', edit_site_path(site) %></td>
 				<td><%= link_to 'excluir', site, :confirm => 'Vc tem certeza disto?', :method => :delete %></td>
+				<td>
 				<% unless site.name == nil %>
-					<td><%= link_to 'aprovar', activate_site_path(site.activation_code) %></td>
+					<%= link_to 'aprovar', activate_site_path(site.activation_code) %>
 				<% end %>
-			<% end %>
-			</tr>
+				</td>
+			</tr>			
 		<% end %>
 	</table>
 <% end %>
+<%= render :partial => 'toptags' %>
 <h1>Sites</h1>
-<% for category in @categories %>
-	<% unless category.sites.empty? %>
-	<h2><%=h category.title %>(<%=h category.sites.size %>)</h2>
-	<ul>
-		<% for site in category.sites %>
-			<% unless site.activation_code != nil %>
-				<li>
-					<%= link_to site.name, site.url, {:target => "_blank"} %>
-					<br>
-					<%= site.description.slice(0,50) %><%= site.description.size >= 50 ? '...' : '' %>
-				</li>
+<h3>Abaixo voc&ecirc; encontra os &uacute;ltimos sites customizados para iPhone e iPod Touch adicionados pelos usu&aacute;rios.</h3>
+<table>
+	<% @sites.each do |site| %>
+	  <tr <%= cycle('class="row-b"',' class="row-a"') %>>
+		<td><%= link_to site.name, site.url, {:target => "_blank"} %>
+		<% if site.description == nil %>
+				<br /><%=h site.description %>
+			<% else %>
+				<br /><%= site.description.slice(0,80) %><%= site.description.size >= 80 ? '...' : '' %>
 			<% end %>
-		<% end %>
-	</ul>
+		</td>
+	  </tr>
 	<% end %>
-<% end %>
-
-<br />
-
-<%= will_paginate @sites %>
-
-<br />
+</table>
+<div id="paginate">
+	<%= will_paginate @sites %>
+</div>

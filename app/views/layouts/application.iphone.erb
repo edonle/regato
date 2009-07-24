@@ -10,22 +10,32 @@ content = "width = device-width, user-scalable = no">
 	<body>
 		<div id="wrap">
 			<div id="header">
-			<h1 id="logo-text">regato</h1>
-		</div>
-		<div id="menu">
-			<ul>
-				<li><%= link_to 'Home', sites_path %></li>
-				<li><%= link_to 'Indique', new_site_path %></li>
-				<li><%= link_to 'Sobre', about_path %></li>
-			</ul>
-		</div>
-		<div id="content-wrap">    
+				<h1 id="logo-text">regato</h1>
+			</div>
+			<div id="menu">
+				<ul>
+				  <li><%= link_to 'Home', sites_path %></li>
+				  <li><%= link_to 'Indique', new_site_path %></li>
+				  <li><%= link_to 'Tags', about_tags_path %></li>
+				  <li><%= link_to 'Sobre', about_path %></li>
+				</ul>
+			</div>
 			<% if logged_in? %>
-				<br /><%= link_to 'Listar', list_path %> | <%= link_to 'Nova categoria', new_category_path %> | <%= link_to 'Novo usu&#225;rio', new_user_path %> | <%= link_to "Sair", logout_path %>
+				<div id="menu">
+					<ul>
+						<li><%= link_to 'Listar', list_path %></li>
+						<li><%= link_to 'Nova categoria', new_category_path %></li>
+						<li><%= link_to 'Novo usu&#225;rio', new_user_path %></li>
+						<li><%= link_to "Sair", logout_path %></li>
+					</ul>
+				</div>
 			<% end %>
-			<p style="color: green"><%= flash[:notice] %></p>
-			<%= yield %>
-		</div>
+			<div id="content-wrap">    
+				<div id="main">
+					<p style="color: green"><%= flash[:notice] %></p>
+					<%= yield %>
+				</div>
+			</div>
 		<div id="footer">
 			<p>&copy; 2009 <strong>Regato</strong></p>
 		</div>

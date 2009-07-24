@@ -7,7 +7,7 @@
   <b>Description:</b>
   <%=h @site.description %>
 </p>
-
-
-<%= link_to 'Edit', edit_site_path(@site) %> |
-<%= link_to 'Back', sites_path %>
+<div id="paginate">
+  <%= link_to 'Editar', edit_site_path(@site) %> |
+  <%= link_to 'Voltar', sites_path %>
+</div>

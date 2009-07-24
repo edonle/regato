@@ -1,0 +1,10 @@
+<h1>Top Tags</h1>
+<h3>As tags mais populares do Regato.com.br <%= link_to '( ? )', about_tags_path %></li></h3>
+<div id="tag_cloud">
+	<code>
+		<% tag_cloud @tags, %w(nube1 nube2 nube3 nube4 nube5) do |name, css_class| %>
+			<%= link_to name, {:action => :tag, :id => name},
+			:class => css_class %>
+		<% end %>
+	</code>
+</div>

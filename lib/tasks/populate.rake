@@ -2,16 +2,30 @@ namespace :db do
   desc "Apaga e gera dados de testes"
   
   task :populate => :environment do
-    require 'populator'
+    require 'populator'    
     
     Site.delete_all
+    Tag.delete_all
+    Tagging.delete_all
     
-    Site.populate 3000 do |site|
+    Site.populate 500 do |site|
       site.url = "http://m." + Populator.words(1) + ".com"
       site.name = Populator.words(3).titleize
       site.description = Populator.sentences(5)
       site.created_at = 2.years.ago..Time.now
       site.updated_at = 2.years.ago..Time.now
+    end
+    
+    Tag.populate 1000 do |tag|
+      tag.name = Populator.words(1)
+    end
+    
+    Tagging.populate 2000 do  |tagging|
+      tagging.tag_id = 1..1000
+      tagging.taggable_id = 1..500
+      tagging.taggable_type = "Site"
+      tagging.context = "tags"
+      tagging.created_at = 2.years.ago..Time.now
     end
   end
 end
